@@ -1,0 +1,213 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160f24">
+  <meta name="description" content="A little Dhanteras light, made just for you.">
+  <title>A Little Diwali Light, Just for You 🪔</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <span class="moon"></span><span class="star star--1">✦</span><span class="star star--2">✧</span>
+    <span class="star star--3">✦</span><span class="star star--4">✧</span><span class="star star--5">✦</span>
+    <div class="sparkles" id="sparkles"></div>
+  </div>
+
+  <main class="page">
+    <header class="topline"><span>AN EVENING OF LIGHT & LOVE</span><span>६ • ११ • २०२६</span></header>
+
+    <section class="screen screen--active" id="welcome" aria-labelledby="welcome-title">
+      <div class="eyebrow">✧ DHANTERAS SPECIAL ✧</div>
+      <h1 id="welcome-title">A little light<br><em>for my favourite person.</em></h1>
+      <p class="intro">Tonight, as every diya lights up a home,<br>there's one person who lights up my world.</p>
+      <div class="hero-diya" aria-label="A glowing diya">
+        <span class="flame"></span><span class="wick"></span><span class="diya-bowl"></span>
+        <span class="diya-glow"></span>
+      </div>
+      <p class="prompt">I made something small, with a whole lot of love.</p>
+      <button class="button button--gold" id="beginBtn">Open your little surprise <span>→</span></button>
+      <div class="bottom-note">MADE WITH LOVE, JUST FOR YOU ♡</div>
+    </section>
+
+    <section class="screen" id="diya" aria-labelledby="diya-title">
+      <div class="eyebrow">A LITTLE WISH, A LITTLE LIGHT</div>
+      <h2 id="diya-title">Will you light a diya with me?</h2>
+      <p class="section-copy">Tap the diya and make a wish. May this little flame carry it gently into the universe.</p>
+      <button class="interactive-diya" id="lightBtn" aria-label="Light the diya">
+        <span class="interactive-diya__halo"></span><span class="interactive-diya__flame"></span>
+        <span class="interactive-diya__wick"></span><span class="interactive-diya__bowl"></span>
+      </button>
+      <p class="hint" id="diyaHint">Tap to light it ✨</p>
+      <button class="button button--gold is-hidden" id="wishNext">There's a wish for you <span>→</span></button>
+    </section>
+
+    <section class="screen" id="blessing" aria-labelledby="blessing-title">
+      <div class="eyebrow">SHUBH DHANTERAS 🪔</div>
+      <h2 id="blessing-title">May life be kind<br>and beautiful to you.</h2>
+      <div class="blessing-list">
+        <p><span>✧</span> May your days be filled with good health and peaceful moments.</p>
+        <p><span>✧</span> May every dream you hold find its way to you.</p>
+        <p><span>✧</span> May success, abundance and new opportunities find your doorstep.</p>
+        <p><span>✧</span> And may you always have a reason to smile, even on ordinary days.</p>
+      </div>
+      <p class="blessing-sign">Because you deserve all the lovely things this world has to offer. ❤️</p>
+      <button class="button button--gold" id="darshanNext">Receive their blessings <span>→</span></button>
+    </section>
+
+    <section class="screen" id="darshan" aria-labelledby="darshan-title">
+      <div class="eyebrow">✧ DIVINE BLESSINGS ✧</div>
+      <h2 id="darshan-title">Two blessings,<br><em>waiting just for you.</em></h2>
+      <p class="section-copy">On Dhanteras we pray to Maa Lakshmi for prosperity and Lord Dhanvantari for good health. Tap each one to receive their blessing.</p>
+
+      <div class="deity-grid">
+        <!-- Maa Lakshmi: lotus, halo and gold coins.
+             To use your own picture, put a file named lakshmi.png next to index.html. -->
+        <button class="deity-card deity-card--lakshmi" id="lakshmiCard" aria-label="Receive Maa Lakshmi's blessing">
+          <span class="deity-card__art">
+            <svg viewBox="0 0 200 180" aria-hidden="true">
+              <defs>
+                <radialGradient id="lakshmiHalo"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".95"/><stop offset="1" stop-color="#ffb85a" stop-opacity="0"/></radialGradient>
+                <linearGradient id="petalFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe1e5"/><stop offset="1" stop-color="#e0607a"/></linearGradient>
+                <linearGradient id="petalBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc4cd"/><stop offset="1" stop-color="#b8425e"/></linearGradient>
+                <radialGradient id="coinGold"><stop offset="0" stop-color="#fff2b8"/><stop offset="1" stop-color="#d39a3a"/></radialGradient>
+              </defs>
+              <circle class="deity-halo" cx="100" cy="78" r="72" fill="url(#lakshmiHalo)"/>
+              <ellipse cx="100" cy="128" rx="74" ry="11" fill="#3f7a5a"/>
+              <ellipse cx="100" cy="126" rx="60" ry="7" fill="#5c9a72"/>
+              <g class="lotus">
+                <path d="M100 122 C76 98 74 64 100 32 C126 64 124 98 100 122Z" fill="url(#petalBack)" transform="rotate(-58 100 122)"/>
+                <path d="M100 122 C76 98 74 64 100 32 C126 64 124 98 100 122Z" fill="url(#petalBack)" transform="rotate(58 100 122)"/>
+                <path d="M100 122 C78 98 77 66 100 36 C123 66 122 98 100 122Z" fill="url(#petalFront)" transform="rotate(-30 100 122)"/>
+                <path d="M100 122 C78 98 77 66 100 36 C123 66 122 98 100 122Z" fill="url(#petalFront)" transform="rotate(30 100 122)"/>
+                <path d="M100 124 C80 98 80 62 100 28 C120 62 120 98 100 124Z" fill="url(#petalFront)"/>
+                <path d="M100 116 L100 46" stroke="#f7b3c0" stroke-width="1.5" opacity=".7"/>
+              </g>
+              <g class="coins">
+                <circle cx="66" cy="152" r="12" fill="url(#coinGold)" stroke="#b97b2c"/>
+                <circle cx="66" cy="152" r="7" fill="none" stroke="#b97b2c" opacity=".6"/>
+                <circle cx="100" cy="158" r="13" fill="url(#coinGold)" stroke="#b97b2c"/>
+                <circle cx="100" cy="158" r="8" fill="none" stroke="#b97b2c" opacity=".6"/>
+                <circle cx="134" cy="152" r="12" fill="url(#coinGold)" stroke="#b97b2c"/>
+                <circle cx="134" cy="152" r="7" fill="none" stroke="#b97b2c" opacity=".6"/>
+              </g>
+            </svg>
+            <img class="deity-card__photo" src="lakshmi.png" alt="" onerror="this.remove()">
+          </span>
+          <span class="deity-card__name">Maa Lakshmi</span>
+          <span class="deity-card__sub">Goddess of wealth &amp; prosperity</span>
+          <span class="deity-card__blessing">
+            <span class="mantra">ॐ श्रीं महालक्ष्म्यै नमः</span>
+            May Maa Lakshmi fill your home with abundance and your heart with contentment.
+          </span>
+          <span class="deity-card__tap">Tap for her blessing ✨</span>
+        </button>
+
+        <!-- Lord Dhanvantari: kalash of amrit.
+             To use your own picture, put a file named dhanvantari.png next to index.html. -->
+        <button class="deity-card deity-card--dhanvantari" id="dhanvantariCard" aria-label="Receive Lord Dhanvantari's blessing">
+          <span class="deity-card__art">
+            <svg viewBox="0 0 200 180" aria-hidden="true">
+              <defs>
+                <radialGradient id="amritHalo"><stop offset="0" stop-color="#e9ffd9" stop-opacity=".9"/><stop offset="1" stop-color="#9fdc9a" stop-opacity="0"/></radialGradient>
+                <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd08a"/><stop offset=".55" stop-color="#d47c3e"/><stop offset="1" stop-color="#8f4126"/></linearGradient>
+                <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd18a"/><stop offset="1" stop-color="#2f7046"/></linearGradient>
+              </defs>
+              <circle class="deity-halo" cx="100" cy="70" r="72" fill="url(#amritHalo)"/>
+              <g>
+                <path d="M100 64 C91 46 93 28 100 14 C107 28 109 46 100 64Z" fill="url(#leaf)" transform="rotate(-62 100 64)"/>
+                <path d="M100 64 C91 46 93 28 100 14 C107 28 109 46 100 64Z" fill="url(#leaf)" transform="rotate(62 100 64)"/>
+                <path d="M100 64 C91 46 93 28 100 14 C107 28 109 46 100 64Z" fill="url(#leaf)" transform="rotate(-32 100 64)"/>
+                <path d="M100 64 C91 46 93 28 100 14 C107 28 109 46 100 64Z" fill="url(#leaf)" transform="rotate(32 100 64)"/>
+              </g>
+              <ellipse cx="100" cy="50" rx="15" ry="17" fill="#a8693a"/>
+              <path d="M92 40 Q100 34 108 40" stroke="#d9a06a" stroke-width="2" fill="none"/>
+              <ellipse cx="100" cy="66" rx="32" ry="7" fill="#f0b464" stroke="#a9552f"/>
+              <path d="M80 66 L85 82 L115 82 L120 66Z" fill="url(#copper)"/>
+              <path d="M85 82 C38 92 38 160 100 164 C162 160 162 92 115 82Z" fill="url(#copper)"/>
+              <path d="M56 114 Q100 128 144 114" stroke="#ffe3a0" stroke-width="3" fill="none"/>
+              <path d="M58 124 Q100 138 142 124" stroke="#ffe3a0" stroke-width="1.5" fill="none" opacity=".7"/>
+              <circle cx="78" cy="122" r="2.5" fill="#fff0c0"/><circle cx="100" cy="126" r="2.5" fill="#fff0c0"/><circle cx="122" cy="122" r="2.5" fill="#fff0c0"/>
+              <path d="M72 100 Q78 92 86 96" stroke="#fff4d6" stroke-width="3" fill="none" opacity=".45" stroke-linecap="round"/>
+            </svg>
+            <img class="deity-card__photo" src="dhanvantari.png" alt="" onerror="this.remove()">
+          </span>
+          <span class="deity-card__name">Lord Dhanvantari</span>
+          <span class="deity-card__sub">God of health &amp; Ayurveda</span>
+          <span class="deity-card__blessing">
+            <span class="mantra">ॐ धन्वंतरये नमः</span>
+            May Lord Dhanvantari bless you with good health, strength and a long, happy life.
+          </span>
+          <span class="deity-card__tap">Tap for his blessing ✨</span>
+        </button>
+      </div>
+
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="footprint" viewBox="0 0 40 70">
+          <ellipse cx="20" cy="45" rx="12" ry="21"/>
+          <circle cx="8" cy="15" r="4"/><circle cx="15" cy="9" r="4.4"/><circle cx="23" cy="8" r="4.2"/>
+          <circle cx="30" cy="11" r="3.7"/><circle cx="35" cy="18" r="3.1"/>
+        </symbol>
+      </svg>
+      <div class="footprints" id="footprints" aria-hidden="true">
+        <svg style="--i:0"><use href="#footprint"/></svg><svg style="--i:1"><use href="#footprint"/></svg>
+        <svg style="--i:2"><use href="#footprint"/></svg><svg style="--i:3"><use href="#footprint"/></svg>
+        <svg style="--i:4"><use href="#footprint"/></svg><svg style="--i:5"><use href="#footprint"/></svg>
+      </div>
+
+      <p class="hint" id="darshanHint">Tap both to receive their blessings 🙏</p>
+      <button class="button button--gold is-hidden" id="letterNext">One more thing… <span>→</span></button>
+    </section>
+
+    <section class="screen" id="letter" aria-labelledby="letter-title">
+      <div class="eyebrow">A NOTE FROM MY HEART</div>
+      <article class="letter-card">
+        <div class="letter-card__ornament">❧</div>
+        <h2 id="letter-title">To my special one,</h2>
+        <div class="typed-message" id="typedMessage" aria-live="polite"></div>
+        <div class="letter-card__sign">With all my warmth,<br><strong>Rahul ❤️</strong></div>
+      </article>
+      <button class="button button--gold is-hidden" id="giftNext">There's a little gift for you <span>→</span></button>
+    </section>
+
+    <section class="screen" id="gift" aria-labelledby="gift-title">
+      <div class="eyebrow">A TINY FESTIVE SURPRISE</div>
+      <h2 id="gift-title">A gift, wrapped in love.</h2>
+      <p class="section-copy">It isn't gold or silver… but I hope it feels priceless.</p>
+      <button class="gift-box" id="giftBtn" aria-label="Open your surprise gift">
+        <span class="gift-box__lid"></span><span class="gift-box__body"></span>
+        <span class="gift-box__ribbon"></span><span class="gift-box__bow">♡</span>
+      </button>
+      <p class="hint" id="giftHint">Tap to unwrap your surprise 🎁</p>
+      <div class="gift-reveal is-hidden" id="giftReveal">
+        <div class="gift-reveal__heart">♡</div>
+        <h3>My favourite blessing is you.</h3>
+        <p>May I keep finding new ways to make you feel loved, appreciated and cherished.</p>
+      </div>
+      <button class="button button--gold is-hidden" id="finalNext">A final little wish <span>→</span></button>
+    </section>
+
+    <section class="screen" id="finale" aria-labelledby="final-title">
+      <div class="final-diyas" aria-hidden="true"><span>🪔</span><span>🪔</span><span>🪔</span></div>
+      <div class="eyebrow">HAPPY DHANTERAS, MY LOVE</div>
+      <h2 id="final-title">May your life glow<br><em>as beautifully as you do.</em></h2>
+      <p class="final-message">Wishing you a Dhanteras filled with warmth, prosperity, good health and countless reasons to smile. May every light you see remind you how precious you are to me.</p>
+      <p class="final-love">You are one of the brightest parts of my life.<br>Happy Dhanteras, my favourite person. ❤️</p>
+      <div class="signature">Forever yours,<br><strong>Rahul</strong></div>
+      <p class="hint finale-hint">Tap anywhere to light a little phuljhadi ✨</p>
+      <div class="final-actions">
+        <button class="button button--gold" id="replayBtn">Experience it again ↻</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">A LITTLE FESTIVE MAGIC • MADE ESPECIALLY FOR YOU</footer>
+  <script src="script.js"></script>
+</body>
+</html>
