@@ -1,0 +1,267 @@
+
+/* =========================================================
+   A LITTLE DIWALI LIGHT — global design tokens and reset
+   ========================================================= */
+:root {
+  color-scheme: dark;
+  --night: #160f24;
+  --night-soft: #24162f;
+  --cream: #fff4dc;
+  --muted: #d7c6c5;
+  --gold: #f6c978;
+  --gold-deep: #c8893e;
+  --rose: #f0a7a4;
+  --glass: rgba(255, 246, 226, .075);
+  --line: rgba(255, 220, 163, .22);
+  --shadow: 0 24px 80px rgba(0, 0, 0, .28);
+  font-family: Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--night); }
+body {
+  min-height: 100vh; margin: 0; overflow-x: hidden; color: var(--cream);
+  background: radial-gradient(ellipse at 50% 0%, #49304a 0%, #24182f 38%, #120d20 100%);
+}
+button { font: inherit; }
+button:focus-visible { outline: 2px solid #fff0bd; outline-offset: 5px; }
+
+/* =========================================================
+   Night sky, moon, stars and ambient sparkle field
+   ========================================================= */
+.sky { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+.moon {
+  position: absolute; width: 125px; height: 125px; right: 11%; top: 8%;
+  border-radius: 50%; background: #fff0c8;
+  box-shadow: 0 0 35px 12px rgba(255, 218, 151, .18), 0 0 110px 35px rgba(255, 190, 106, .12);
+  opacity: .9;
+}
+.star { position: absolute; color: #ffe4aa; animation: twinkle 3s ease-in-out infinite; }
+.star--1 { top: 15%; left: 13%; font-size: 19px; }
+.star--2 { top: 27%; left: 82%; animation-delay: .7s; }
+.star--3 { top: 61%; left: 8%; animation-delay: 1.3s; }
+.star--4 { top: 72%; right: 12%; font-size: 20px; animation-delay: .4s; }
+.star--5 { top: 43%; right: 24%; animation-delay: 1.8s; }
+.sparkles { position: absolute; inset: 0; }
+.sparkle {
+  position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #ffe6b2;
+  box-shadow: 0 0 12px 3px rgba(255, 206, 122, .4); animation: drift 7s ease-in-out infinite;
+}
+@keyframes twinkle { 0%,100% { opacity: .35; transform: scale(.75); } 50% { opacity: 1; transform: scale(1.25); } }
+@keyframes drift { 0%,100% { transform: translate3d(0,0,0); opacity: .2; } 50% { transform: translate3d(10px,-22px,0); opacity: .9; } }
+@keyframes flame { 0%,100% { transform: translateX(-50%) rotate(-4deg) scaleY(1); } 50% { transform: translateX(-50%) rotate(5deg) scaleY(1.1); } }
+
+/* =========================================================
+   Page frame and reusable screen transitions
+   ========================================================= */
+.page {
+  position: relative; z-index: 1; width: min(760px, calc(100% - 32px));
+  min-height: calc(100vh - 76px); margin: 0 auto; display: flex; flex-direction: column;
+}
+.topline, .footer {
+  display: flex; justify-content: space-between; gap: 12px; padding: 23px 2px;
+  color: rgba(255, 231, 194, .56); font: 10px/1.4 Arial, sans-serif; letter-spacing: .19em;
+}
+.footer { position: relative; z-index: 1; justify-content: center; text-align: center; padding-top: 8px; }
+.screen {
+  display: none; width: 100%; flex: 1; min-height: 650px; padding: 48px 34px 58px;
+  align-items: center; flex-direction: column; justify-content: center; text-align: center;
+  animation: screenIn .8s cubic-bezier(.2,.7,.2,1) both;
+}
+.screen--active { display: flex; }
+@keyframes screenIn { from { opacity: 0; transform: translateY(18px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.eyebrow { color: var(--gold); font: 10px/1.5 Arial, sans-serif; letter-spacing: .28em; margin-bottom: 22px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-weight: 400; line-height: 1.13; letter-spacing: -.035em; }
+h1 { font-size: clamp(42px, 8vw, 70px); margin-bottom: 22px; }
+h2 { font-size: clamp(34px, 6vw, 52px); margin-bottom: 18px; }
+h1 em, h2 em { color: var(--gold); font-style: italic; }
+.intro, .section-copy { color: var(--muted); font-size: 16px; line-height: 1.85; }
+.prompt, .hint { color: #e7cfa9; font-size: 14px; letter-spacing: .025em; margin: 18px 0 22px; }
+
+/* =========================================================
+   Buttons and shared interactions
+   ========================================================= */
+.button {
+  min-height: 50px; border: 1px solid transparent; border-radius: 999px; padding: 0 25px;
+  cursor: pointer; transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  font: 12px/1 Arial, sans-serif; letter-spacing: .06em;
+}
+.button:hover { transform: translateY(-3px); }
+.button:active { transform: translateY(0) scale(.98); }
+.button--gold {
+  color: #382319; background: linear-gradient(135deg, #ffe7b1, #e8b665);
+  box-shadow: 0 10px 30px rgba(221, 161, 83, .2);
+}
+.button--gold:hover { box-shadow: 0 14px 38px rgba(221, 161, 83, .34); }
+.button--gold span { margin-left: 12px; font-size: 17px; }
+.button--outline { color: var(--cream); background: transparent; border-color: var(--line); }
+.is-hidden { display: none !important; }
+
+/* =========================================================
+   Welcome screen: CSS-only diya illustration
+   ========================================================= */
+.hero-diya { position: relative; width: 190px; height: 175px; margin: 20px auto 6px; }
+.diya-glow {
+  position: absolute; width: 160px; height: 120px; left: 15px; bottom: 8px; border-radius: 50%;
+  background: rgba(255, 171, 72, .16); filter: blur(24px);
+}
+.diya-bowl, .interactive-diya__bowl {
+  position: absolute; width: 142px; height: 62px; left: 50%; bottom: 20px; transform: translateX(-50%);
+  border-radius: 12px 12px 75px 75px; border-bottom: 8px solid #a95034;
+  background: linear-gradient(180deg, #f8c77b, #bc653f 75%); box-shadow: inset 0 -9px 0 rgba(111, 42, 34, .15), 0 12px 24px rgba(0,0,0,.25);
+}
+.flame, .interactive-diya__flame {
+  position: absolute; z-index: 2; width: 26px; height: 48px; left: 50%; bottom: 83px;
+  transform: translateX(-50%); border-radius: 80% 10% 80% 80%; rotate: 0deg;
+  background: radial-gradient(ellipse at 65% 70%, #fffbd7 0 18%, #ffd45f 35%, #f18a36 72%, transparent 74%);
+  filter: drop-shadow(0 0 13px #ffbd56); animation: flame 1.15s ease-in-out infinite;
+}
+.wick, .interactive-diya__wick {
+  position: absolute; z-index: 3; left: 50%; bottom: 75px; width: 3px; height: 13px;
+  background: #49271f; transform: translateX(-50%); border-radius: 3px;
+}
+
+/* =========================================================
+   Light-a-diya interaction
+   ========================================================= */
+.interactive-diya { position: relative; width: 220px; height: 205px; border: 0; background: transparent; cursor: pointer; margin: 16px 0 0; }
+.interactive-diya__halo {
+  position: absolute; width: 175px; height: 155px; left: 22px; bottom: 2px; border-radius: 50%;
+  background: rgba(255, 180, 81, .06); filter: blur(20px); transition: background .6s, transform .6s;
+}
+.interactive-diya__bowl { width: 165px; height: 69px; bottom: 25px; }
+.interactive-diya__flame { bottom: 92px; width: 31px; height: 58px; opacity: .08; transition: opacity .6s, filter .6s; }
+.interactive-diya__wick { bottom: 84px; }
+.interactive-diya.is-lit .interactive-diya__flame { opacity: 1; }
+.interactive-diya.is-lit .interactive-diya__halo { background: rgba(255, 180, 81, .25); transform: scale(1.25); }
+.interactive-diya.is-lit { animation: diyaPulse 1.8s ease-in-out infinite; }
+@keyframes diyaPulse { 50% { filter: drop-shadow(0 0 24px rgba(255,191,93,.35)); } }
+
+/* =========================================================
+   Blessings and personal note card
+   ========================================================= */
+.blessing-list {
+  width: min(530px, 100%); margin: 22px 0 24px; padding: 12px 24px;
+  border: 1px solid var(--line); border-radius: 22px; background: var(--glass);
+  backdrop-filter: blur(14px); box-shadow: var(--shadow); text-align: left;
+}
+.blessing-list p { display: flex; gap: 13px; color: #f1dfc8; line-height: 1.65; font-size: 15px; margin: 12px 0; }
+.blessing-list span { color: var(--gold); }
+.blessing-sign { color: var(--rose); font-style: italic; line-height: 1.7; margin-bottom: 25px; }
+.letter-card {
+  width: min(550px, 100%); padding: 34px clamp(22px, 6vw, 48px); margin: 0 0 25px;
+  color: #4a302c; text-align: left; border: 1px solid rgba(255,255,255,.55); border-radius: 5px 22px 5px 22px;
+  background: linear-gradient(145deg, #fff5df, #f3dfbd); box-shadow: 0 25px 70px rgba(0,0,0,.28);
+  transform: rotate(-.5deg); position: relative;
+}
+.letter-card__ornament { color: #b77b49; font-size: 30px; text-align: center; margin-bottom: 8px; }
+.letter-card h2 { font-size: 30px; color: #70443b; }
+.typed-message { min-height: 230px; white-space: pre-line; font-size: 16px; line-height: 1.9; color: #63443b; }
+.letter-card__sign { text-align: right; color: #8b5a49; line-height: 1.7; margin-top: 18px; }
+.letter-card__sign strong { font-size: 22px; color: #9c573e; }
+
+/* =========================================================
+   Gift box and reveal
+   ========================================================= */
+.gift-box { position: relative; width: 170px; height: 160px; margin: 28px 0 0; border: 0; background: transparent; cursor: pointer; transition: transform .3s; }
+.gift-box:hover { transform: translateY(-6px) rotate(-2deg); }
+.gift-box__body { position: absolute; bottom: 12px; left: 18px; width: 134px; height: 96px; border-radius: 5px 5px 13px 13px; background: linear-gradient(135deg,#c65c57,#8e303d); box-shadow: 0 18px 28px rgba(0,0,0,.25); }
+.gift-box__lid { position: absolute; z-index: 2; left: 10px; top: 42px; width: 150px; height: 28px; border-radius: 6px; background: linear-gradient(135deg,#ed9c79,#b94e51); transition: transform .7s; }
+.gift-box__ribbon { position: absolute; z-index: 3; left: 77px; top: 43px; bottom: 12px; width: 16px; background: #f8d58c; }
+.gift-box__bow { position: absolute; z-index: 4; left: 65px; top: 13px; color: #ffe3a7; font-size: 40px; }
+.gift-box.is-open .gift-box__lid { transform: translate(35px,-45px) rotate(18deg); }
+.gift-box.is-open { animation: giftBounce .7s ease; }
+@keyframes giftBounce { 35% { transform: translateY(-15px) scale(1.04); } 70% { transform: translateY(3px); } }
+.gift-reveal { max-width: 430px; padding: 18px 25px; margin: 8px 0 20px; border-radius: 22px; border: 1px solid var(--line); background: var(--glass); animation: screenIn .6s both; }
+.gift-reveal__heart { color: #f5a4a0; font-size: 48px; animation: heartBeat 1.2s infinite; }
+.gift-reveal h3 { color: var(--gold); font-size: 23px; font-weight: 400; margin-bottom: 8px; }
+.gift-reveal p { color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+@keyframes heartBeat { 0%,100% { transform: scale(1); } 14% { transform: scale(1.18); } 28% { transform: scale(1); } 42% { transform: scale(1.12); } }
+
+/* =========================================================
+   Finale and sharing actions
+   ========================================================= */
+.final-diyas { display: flex; gap: 28px; font-size: 36px; margin-bottom: 28px; filter: drop-shadow(0 0 14px rgba(255,184,86,.35)); }
+.final-diyas span:nth-child(2) { transform: translateY(-13px); }
+.final-message, .final-love { max-width: 540px; color: var(--muted); line-height: 1.85; font-size: 16px; }
+.final-love { color: #ffd9b0; margin: 18px 0 22px; }
+.signature { color: #e8c7a4; line-height: 1.7; font-style: italic; }
+.signature strong { font-size: 30px; color: var(--gold); font-style: normal; }
+.final-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+.finale-hint { margin: 22px 0 0; opacity: .75; }
+#finale { cursor: pointer; }
+
+/* =========================================================
+   Divine blessings: Maa Lakshmi and Lord Dhanvantari
+   ========================================================= */
+.deity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; width: min(600px, 100%); margin: 14px 0 6px; }
+.deity-card {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 18px 16px 20px; border: 1px solid var(--line); border-radius: 26px; cursor: pointer;
+  color: var(--cream); background: var(--glass); backdrop-filter: blur(14px); box-shadow: var(--shadow);
+  transition: transform .35s ease, border-color .5s, box-shadow .5s, background .5s;
+}
+.deity-card:hover { transform: translateY(-5px); }
+.deity-card__art { position: relative; display: block; width: 100%; max-width: 210px; aspect-ratio: 200 / 180; }
+.deity-card__art svg { width: 100%; height: 100%; overflow: visible; }
+.deity-card__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 18px; }
+.deity-halo { transform-box: fill-box; transform-origin: center; opacity: .35; transform: scale(.8); transition: opacity .9s, transform .9s; }
+.lotus { transform-box: fill-box; transform-origin: 50% 100%; transform: scale(.82); transition: transform 1s cubic-bezier(.3,1.5,.5,1); }
+.deity-card__name { display: block; font-size: 22px; margin-top: 6px; }
+.deity-card__sub { display: block; color: var(--muted); font: 11px/1.5 Arial, sans-serif; letter-spacing: .08em; }
+.deity-card__tap { display: block; color: var(--gold); font: 11px/1.5 Arial, sans-serif; letter-spacing: .1em; margin-top: 10px; }
+.deity-card__blessing {
+  display: block; max-height: 0; overflow: hidden; opacity: 0; color: #f1dfc8; font-size: 14px; line-height: 1.65;
+  transition: max-height .9s ease, opacity .9s ease, margin .9s ease;
+}
+.mantra { display: block; color: var(--gold); font-size: 16px; margin-bottom: 6px; }
+.deity-card.is-blessed { cursor: default; transform: none; }
+.deity-card.is-blessed .deity-halo { opacity: 1; transform: scale(1.12); animation: haloPulse 3s ease-in-out infinite; }
+.deity-card.is-blessed .lotus { transform: scale(1); }
+.deity-card.is-blessed .deity-card__blessing { max-height: 220px; opacity: 1; margin-top: 10px; }
+.deity-card.is-blessed .deity-card__tap { display: none; }
+.deity-card--lakshmi.is-blessed { border-color: rgba(255, 200, 120, .6); box-shadow: 0 0 45px rgba(255, 186, 92, .25), var(--shadow); }
+.deity-card--dhanvantari.is-blessed { border-color: rgba(180, 235, 170, .55); box-shadow: 0 0 45px rgba(160, 230, 150, .2), var(--shadow); }
+@keyframes haloPulse { 0%,100% { transform: scale(1.08); } 50% { transform: scale(1.18); } }
+
+/* Maa Lakshmi's footprints walking into the home */
+.footprints { display: flex; justify-content: center; align-items: flex-start; gap: 12px; height: 52px; margin: 20px 0 0; }
+.footprints svg { width: 17px; height: 30px; fill: #e2665c; opacity: 0; translate: 0 8px; }
+.footprints svg:nth-child(odd) { scale: -1 1; margin-top: 14px; }
+.footprints.is-walking svg { animation: stepIn .6s ease forwards; animation-delay: calc(var(--i) * .35s); }
+@keyframes stepIn { to { opacity: .85; translate: 0 0; } }
+
+/* Falling coins and rising sparkle particles */
+.particle { position: fixed; z-index: 6; pointer-events: none; line-height: 1; will-change: transform, opacity; }
+.particle--coin {
+  border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff4c2, #e7b34f 55%, #b47a2a);
+  box-shadow: 0 0 10px rgba(255, 205, 110, .6), inset 0 0 0 2px rgba(150, 95, 30, .35);
+}
+
+/* =========================================================
+   Responsive adjustments
+   ========================================================= */
+@media (max-width: 600px) {
+  .page { width: min(100% - 20px, 520px); min-height: calc(100vh - 60px); }
+  .topline { font-size: 8px; letter-spacing: .13em; padding: 17px 2px; }
+  .screen { min-height: 610px; padding: 38px 10px 45px; }
+  .moon { width: 85px; height: 85px; right: 7%; top: 7%; }
+  .intro, .section-copy { font-size: 14px; }
+  .blessing-list { padding: 10px 17px; }
+  .blessing-list p { font-size: 13px; }
+  .typed-message { min-height: 255px; font-size: 14px; }
+  .letter-card h2 { font-size: 25px; }
+  .final-diyas { font-size: 29px; gap: 18px; }
+  .footer { font-size: 8px; letter-spacing: .12em; }
+  .deity-grid { gap: 10px; }
+  .deity-card { padding: 14px 8px 16px; border-radius: 20px; }
+  .deity-card__name { font-size: 18px; }
+  .deity-card__blessing { font-size: 12.5px; }
+  .mantra { font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .deity-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
